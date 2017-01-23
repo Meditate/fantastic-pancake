@@ -15,7 +15,7 @@ AllCops:
     - spec/rails_helper.rb
     - test/**/*
     - db/**/*
-
+    - Guardfile
 RSpec/FilePath:
   Enabled: false
   CustomTransform:

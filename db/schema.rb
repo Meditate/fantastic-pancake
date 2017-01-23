@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123223835) do
+ActiveRecord::Schema.define(version: 20170123230457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,31 @@ ActiveRecord::Schema.define(version: 20170123223835) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "country_code"
+    t.integer  "panel_provider_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["panel_provider_id"], name: "index_countries_on_panel_provider_id", using: :btree
+  end
+
+  create_table "location_groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "panel_provider_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["country_id"], name: "index_location_groups_on_country_id", using: :btree
+    t.index ["panel_provider_id"], name: "index_location_groups_on_panel_provider_id", using: :btree
+  end
+
   create_table "panel_providers", force: :cascade do |t|
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "countries", "panel_providers"
+  add_foreign_key "location_groups", "countries"
+  add_foreign_key "location_groups", "panel_providers"
 end
