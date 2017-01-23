@@ -1,0 +1,23 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    command: ['bundle', 'exec', 'rubocop']
+    on_warn: fail
+
+  TrailingWhitespace:
+     enabled: true
+     description: 'Trailing whitespace detected'
+
+CommitMsg:
+  RussianNovel:
+    enabled: true
+    description: 'Check length of commit message'
+    quiet: false
+    required: true
+
+  TextWidth:
+    enabled: true
+    required: true
+    description: 'Check text width'
+    max_subject_width: 60
+    max_body_width: 72
