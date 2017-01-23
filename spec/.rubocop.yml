@@ -1,0 +1,14 @@
+inherit_from: ../.rubocop.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 20
+
+Metrics/BlockLength:
+  Enabled: false

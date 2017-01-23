@@ -20,6 +20,7 @@ gem "hirb", require: false
 group :development, :test do
   gem "byebug", platform: :mri
   gem "factory_girl_rails", "~> 4.7"
+  gem "rubocop-rspec"
   gem "guard-rspec"
   gem "shoulda-matchers", "~> 3.1", ">= 3.1.1"
   gem "overcommit", require: false
