@@ -12,5 +12,9 @@ RSpec.describe Country, type: :model do
   describe "relations" do
     it { is_expected.to belong_to(:panel_provider) }
     it { is_expected.to have_many(:location_groups) }
+    it { is_expected.to have_many(:country_associations) }
+    it do
+      is_expected.to have_many(:target_groups).through(:country_associations)
+    end
   end
 end

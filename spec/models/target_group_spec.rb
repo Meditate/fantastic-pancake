@@ -16,5 +16,7 @@ RSpec.describe TargetGroup, type: :model do
     it { is_expected.to belong_to(:panel_provider) }
     it { is_expected.to belong_to(:parent) }
     it { is_expected.to have_many(:subgroups) }
+    it { is_expected.to have_many(:country_associations) }
+    it { is_expected.to have_many(:countries).through(:country_associations) }
   end
 end
