@@ -13,5 +13,7 @@ RSpec.describe LocationGroup, type: :model do
   describe "relations" do
     it { is_expected.to belong_to(:country) }
     it { is_expected.to belong_to(:panel_provider) }
+    it { is_expected.to have_many(:location_associations) }
+    it { is_expected.to have_many(:locations).through(:location_associations) }
   end
 end

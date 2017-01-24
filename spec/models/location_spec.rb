@@ -9,4 +9,11 @@ RSpec.describe Location, type: :model do
     it { is_expected.to have_db_column(:name) }
     it { is_expected.to have_db_column(:secret_code) }
   end
+
+  describe "relations" do
+    it { is_expected.to have_many(:location_associations) }
+    it do
+      is_expected.to have_many(:location_groups).through(:location_associations)
+    end
+  end
 end

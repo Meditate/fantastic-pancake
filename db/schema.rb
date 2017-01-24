@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124191321) do
+ActiveRecord::Schema.define(version: 20170124192421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170124191321) do
     t.index ["target_group_id"], name: "index_country_associations_on_target_group_id", using: :btree
   end
 
+  create_table "location_associations", force: :cascade do |t|
+    t.integer  "location_group_id"
+    t.integer  "location_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["location_group_id"], name: "index_location_associations_on_location_group_id", using: :btree
+    t.index ["location_id"], name: "index_location_associations_on_location_id", using: :btree
+  end
+
   create_table "location_groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -54,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170124191321) do
     t.string   "secret_code"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["external_id"], name: "index_locations_on_external_id", unique: true, using: :btree
   end
 
   create_table "panel_providers", force: :cascade do |t|
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 20170124191321) do
   add_foreign_key "countries", "panel_providers"
   add_foreign_key "country_associations", "countries"
   add_foreign_key "country_associations", "target_groups"
+  add_foreign_key "location_associations", "location_groups"
+  add_foreign_key "location_associations", "locations"
   add_foreign_key "location_groups", "countries"
   add_foreign_key "location_groups", "panel_providers"
   add_foreign_key "target_groups", "panel_providers"
