@@ -12,7 +12,7 @@ LOCATIONS = %w(
 # curl -H "Authorization: Token token=929c3033b82be6053dc8d9d5fbcd8073"
 # http://localhost:3000/private/locations/EN
 
-ApiKey.where(key: "929c3033b82be6053dc8d9d5fbcd8073").first_or_create!
+ApiKey.where(key: "key").first_or_create!
 
 # Create 3 panel providers
 
