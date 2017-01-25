@@ -1,17 +1,14 @@
-class Public::LocationsController::ShowFacade
+class Public::TargetGroupsController::ShowFacade
   def initialize(params)
     self.params = params
   end
 
-  def locations
+  def target_groups
     return unless country
-    location_groups.map do |location_group|
-      location_group.locations.select(:name, :external_id)
-    end.first
+    panel_provider.target_groups.select(:name, :external_id, :parent_id)
   end
 
   delegate :panel_provider, to: :country
-  delegate :location_groups, to: :panel_provider
 
   private
 

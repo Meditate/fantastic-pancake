@@ -3,7 +3,8 @@ class Public::LocationsController < ApplicationController
     facade = ShowFacade.new(params)
 
     if facade.locations
-      render json: facade.locations.to_json, status: 200
+      locations = facade.locations.to_json
+      render json: JSON.pretty_generate(JSON.parse(locations)), status: 200
     else
       render json: { errors: "Country not found" }, status: 422
     end
