@@ -7,6 +7,10 @@ LOCATIONS = %w(
   California Kiyev Moscow Tremptown Wroclaw Connecticut
 )
 
+# Create Api key
+
+ApiKey.where(key: "929c3033b82be6053dc8d9d5fbcd8073").first_or_create!
+
 # Create 3 panel providers
 
 PANEL_CODES.each do |code|
