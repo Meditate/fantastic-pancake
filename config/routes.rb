@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   end
 
   namespace :private do
+    resources :locations, only: [:show], param: :country_code
   end
 end
